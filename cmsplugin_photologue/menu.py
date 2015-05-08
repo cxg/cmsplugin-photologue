@@ -107,14 +107,14 @@ def get_nodes(request):
                 slug_done = []
                 month_node.childrens.append(day_node)
 
-            if not item.title_slug in slug_done:
-                slug_done.append(item.title_slug)
+            if not item.slug in slug_done:
+                slug_done.append(item.slug)
                 #one node child for the day node
-                item_node = NavigationNode(item.title, reverse('pl-%s-detail' % model, kwargs=dict(year=date.year, month=date.strftime('%b').lower(), day=date.day, slug=item.title_slug)))
+                item_node = NavigationNode(item.title, reverse('pl-%s-detail' % model, kwargs=dict(year=date.year, month=date.strftime('%b').lower(), day=date.day, slug=item.slug)))
 #                item_node = NavigationNode(item.title, reverse('%spl-%s-detail' % (lang_namespace, model), kwargs=dict(year=date.year, month=date.strftime('%b').lower(), day=date.day, slug=item.title_slug)))
                 day_node.childrens.append(item_node)
                 #and finally, one node child for the base node
-                item_node = NavigationNode(item.title, reverse('pl-%s' % model, kwargs=dict(slug=item.title_slug)))
+                item_node = NavigationNode(item.title, reverse('pl-%s' % model, kwargs=dict(slug=item.slug)))
 #                item_node = NavigationNode(item.title, reverse('%spl-%s' % (lang_namespace, model), kwargs=dict(slug=item.title_slug)))
                 base_node.childrens.append(item_node)
 

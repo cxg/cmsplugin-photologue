@@ -48,7 +48,7 @@ class CMSPhotologuePhotoPlugin(CMSPluginBase):
         
     def render(self, context, instance, placeholder):
         context.update({'photo':instance.photo, 'placeholder':placeholder})
-        context.update({'slug_field': 'title_slug',
+        context.update({'slug_field': 'slug',
                         'size' : instance.size,
                         'show_caption':instance.show_caption,
                         'link_to_full_image':instance.link_to_full_image,
