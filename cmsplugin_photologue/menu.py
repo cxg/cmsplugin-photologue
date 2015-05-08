@@ -1,9 +1,20 @@
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from menus.base import NavigationNode
-from photologue.models import Gallery, Photo
-from photologue.urls import gallery_args, photo_args
+from photologue.models import Gallery, Photo, SAMPLE_SIZE
 
+
+gallery_args = {
+    'date_field': 'pub_date', 
+    'allow_empty': True, 
+    'queryset': Gallery.objects.filter(is_public=True), 
+    'extra_context':{'sample_size':SAMPLE_SIZE}
+    }
+photo_args = {
+    'date_field': 'pub_date', 
+    'allow_empty': True, 
+    'queryset': Photo.objects.filter(is_public=True)
+}
 
 def get_nodes(request):
     """ creates mptt style parent-child list for extending django-cms navigation (menu & breadcrumb); structured on photologue.urls """
